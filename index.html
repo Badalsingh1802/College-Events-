@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EventCo — Events & Registrations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <h1>College Events</h1>
+        <p class="tag">Make every college event unforgettable</p>
+      </div>
+      <div class="controls">
+        <input id="q" class="search" placeholder="Search events or keywords…" />
+        <div class="right-buttons">
+          <button id="addEventBtn" class="btn accent">+ Add Event</button>
+          <button id="adminOpen" class="btn ghost">Admin</button>
+          <button  id="themeBtn" class="btn">Theme</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid" id="eventsGrid" aria-live="polite"></section>
+
+    <section class="summary">
+      <div class="summary-box">
+        <div>Events: <strong id="totalEvents">0</strong> • Upcoming: <strong id="upcomingCount">0</strong></div>
+        <div class="muted">Admin demo password: <code>admin123</code></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Details / Register Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head">
+        <h3 id="mTitle">Event</h3>
+        <button id="closeModal" class="btn">Close</button>
+      </header>
+
+      <div class="modal-body">
+        <div class="modal-left">
+          <img id="mImg" class="modal-cover" alt="cover" />
+          <div class="muted" id="mMeta"></div>
+          <div style="margin-top:8px"><strong>Seats left:</strong> <span id="mSeats" class="pill">—</span></div>
+        </div>
+
+        <div class="modal-right">
+          <div id="detailOnly">
+            <p id="mDesc" class="desc"></p>
+            <div style="margin-top:12px">
+              <button id="openRegBtn" class="btn accent">Register</button>
+            </div>
+          </div>
+
+          <div id="regSection" class="hidden" style="margin-top:6px">
+            <form id="regForm">
+              <input type="hidden" id="mEventId" />
+              <label>Name</label><input id="rName" required />
+              <label>Email</label><input id="rEmail" type="email" required />
+              <label>Phone</label><input id="rPhone" />
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <button class="btn accent" type="submit">Confirm</button>
+                <button id="regBack" type="button" class="btn">Back</button>
+              </div>
+              <div id="regMsg" class="muted" style="margin-top:8px"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Modal (simple) -->
+  <div id="adminModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head">
+        <h3>Admin</h3>
+        <button id="closeAdmin" class="btn">Close</button>
+      </header>
+
+      <div class="modal-body">
+        <div class="admin-col">
+          <h4>Add / Edit Event</h4>
+          <form id="eventForm">
+            <input type="hidden" id="evId" />
+            <label>Title</label><input id="evTitle" required />
+            <label>Description</label><textarea id="evDesc"></textarea>
+            <div style="display:flex;gap:8px">
+              <div style="flex:1"><label>Date</label><input id="evDate" type="date" required /></div>
+              <div style="flex:1"><label>Time</label><input id="evTime" type="time" /></div>
+            </div>
+            <label>Venue</label><input id="evVenue" />
+            <label>Capacity</label><input id="evCap" type="number" />
+            <label>Cover image (optional)</label><input id="evImage" type="file" accept="image/*" />
+            <div style="display:flex;gap:8px;margin-top:10px"><button class="btn accent" type="submit">Save</button><button id="cancelEdit" type="button" class="btn">Cancel</button></div>
+          </form>
+        </div>
+
+        <div class="admin-col">
+          <h4>Events</h4>
+          <div id="evTableContainer" style="max-height:320px;overflow:auto"></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button id="exportAll" class="btn">Export CSV</button>
+            <button id="logout" class="btn">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-section">
+      <h3>EventCo</h3>
+      <p>Your college event management system where all hackathons, contests, seminars and workshops reach students instantly.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>Email: support@eventco.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Address: Greater Noida, uttar pradesh</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 EventCo • All Rights Reserved.
+  </div>
+</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
